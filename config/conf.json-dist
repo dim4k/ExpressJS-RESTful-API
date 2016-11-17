@@ -5,7 +5,8 @@
     "port" : 3000
   },
   "db" : {
-    "dbname" : "localhost",
+    "url" : "localhost",
+    "port" : 27017,
     "username" : "root",
     "password" : ""
   }
