@@ -3,7 +3,10 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('pages/index.ejs');
+    var hello = new Object();
+    hello.title = 'Hello World';
+    hello.text = 'Welcome on my new website'
+    res.render('pages/index.ejs',{hello:hello});
 });
 
 module.exports = router;
