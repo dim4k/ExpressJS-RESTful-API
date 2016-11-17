@@ -1,0 +1,8 @@
+# MongoDB example configuration file
+# Please consider putting your own configuration paramaters and changing extension file to *.conf
+dbpath = {YOUR_PROJECT_DIRECTORY}\mean_stack\data
+port = 27017
+logpath = {YOUR_PROJECT_DIRECTORY}\mean_stack\data\log\mongo.log
+
+# Run in console : mongod -f "{YOUR_PROJECT_DIRECTORY}\mean_stack\config\mongodb.conf" --install --serviceName mdb27017 --serviceDisplayName "MongoDB Server Instance 27017" --serviceDescription "MongoDB Server Instance running on 27017"
+# Finally launch the service just created

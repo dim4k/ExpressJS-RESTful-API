@@ -50,3 +50,7 @@ jspm_packages
 .idea/
 config/conf.json
 tuto.txt
+data/*
+!data/log/
+/config/mongodb.conf
+
