@@ -5,12 +5,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const config = require('./config/conf.json');
 
-const index = require('./routes/index');
+const index = require('./app-api/routes/index');
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app-api/views'));
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
