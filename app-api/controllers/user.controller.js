@@ -17,7 +17,6 @@ module.exports.profileRead = function(req, res) {
 };
 
 module.exports.findUserByName = function(req, res) {
-    console.log(req.params.name);
     User.findOne({'name': req.params.name})
         .exec(function(err, users) {
             if(users != null) {
@@ -25,7 +24,6 @@ module.exports.findUserByName = function(req, res) {
                 if(Array.isArray(users)) {
                     let i = 0;
                     for (let user of users) {
-                        console.log(user);
                         lightUsers[i] = {"email" :user.email};
                         i++;
                     }
@@ -48,7 +46,6 @@ module.exports.findAllUser = function(req, res) {
                 if(Array.isArray(users)) {
                     let i = 0;
                     for (let user of users) {
-                        console.log(user);
                         lightUsers[i] = {"email" :user.email};
                         i++;
                     }
