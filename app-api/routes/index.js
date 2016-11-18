@@ -6,11 +6,13 @@ const auth = jwt({
     userProperty: 'payload'
 });
 
-const ctrlProfile = require('../controllers/profile.controller');
+const ctrlUser = require('../controllers/user.controller');
 const ctrlAuth = require('../controllers/authentication.controller');
 
 // profile
-router.get('/profile', auth, ctrlProfile.profileRead);
+router.get('/profile', auth, ctrlUser.profileRead);
+router.get('/user/:name', ctrlUser.findUserByName);
+router.get('/users', ctrlUser.findAllUser);
 
 // authentication
 router.post('/register', ctrlAuth.register);
