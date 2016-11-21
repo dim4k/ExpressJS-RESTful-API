@@ -16,19 +16,19 @@ module.exports.profileRead = function(req, res) {
 
 };
 
-module.exports.findUserByName = function(req, res) {
-    User.findOne({'name': req.params.name})
+module.exports.findUserById = function(req, res) {
+    User.findById(req.params.id)
         .exec(function(err, users) {
             if(users != null) {
                 let lightUsers = [];
                 if(Array.isArray(users)) {
                     let i = 0;
                     for (let user of users) {
-                        lightUsers[i] = {"email" :user.email};
+                        lightUsers[i] = {"email" :user.email,"name":user.name};
                         i++;
                     }
                 }else{
-                    lightUsers[0] = {"email": users.email};
+                    lightUsers[0] = {"email": users.email,"name":users.name};
                 }
                 res.status(200).json(lightUsers);
             }else{
@@ -38,24 +38,26 @@ module.exports.findUserByName = function(req, res) {
 
 };
 
-module.exports.findAllUser = function(req, res) {
-    User.find()
-        .exec(function(err, users) {
+module.exports.findUsers = function(req, res) {
+    let userModel = User.find();
+    if(typeof req.query.name != 'undefined'){
+        userModel.findOne({'name': req.query.name})
+    }
+    userModel.exec(function(err, users) {
             if(users != null) {
                 let lightUsers = [];
                 if(Array.isArray(users)) {
                     let i = 0;
                     for (let user of users) {
-                        lightUsers[i] = {"email" :user.email};
+                        lightUsers[i] = {"email" :user.email,"name":user.name};
                         i++;
                     }
                 }else{
-                    lightUsers[0] = {"email": users.email};
+                    lightUsers[0] = {"email": users.email,"name":users.name};
                 }
                 res.status(200).json(lightUsers);
             }else{
                 res.status(200).json({});
             }
         });
-
 };

@@ -11,8 +11,8 @@ const ctrlAuth = require('../controllers/authentication.controller');
 
 // profile
 router.get('/profile', auth, ctrlUser.profileRead);
-router.get('/user/:name', ctrlUser.findUserByName);
-router.get('/users', ctrlUser.findAllUser);
+router.get('/user/:id', ctrlUser.findUserById);
+router.get('/users', ctrlUser.findUsers);
 
 // authentication
 router.post('/register', ctrlAuth.register);
