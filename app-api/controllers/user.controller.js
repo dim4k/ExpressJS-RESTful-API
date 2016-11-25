@@ -41,7 +41,7 @@ module.exports.findUserById = function(req, res) {
 module.exports.findUsers = function(req, res) {
     let userModel = User.find();
     if(typeof req.query.name != 'undefined'){
-        userModel.findOne({'name': req.query.name})
+        userModel.find({'name': req.query.name})
     }
     userModel.exec(function(err, users) {
             if(users != null) {
