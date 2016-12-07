@@ -39,7 +39,9 @@ module.exports.findUserById = function(req, res) {
 };
 
 module.exports.findUsers = function(req, res) {
+    //Find all users
     let userModel = User.find();
+    //Restricting results with URI parameters
     if(typeof req.query != 'undefined'){
         userModel.find(req.query)
     }
