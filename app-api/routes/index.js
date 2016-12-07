@@ -20,8 +20,9 @@ router.post('/login', ctrlAuth.login);
 
 /* GET home page.*/
 router.get('/', function(req, res, next) {
-    const hello = {title:'Hello World', text:'Welcome on my new website'};
-    res.render('index/index.ejs',{hello:hello});
+    const title = {title:'REST API', text:'Reference documentation'};
+    //TODO : List all get and post methods
+    res.render('index/index.ejs',{title:title});
 });
 
 module.exports = router;
