@@ -43,6 +43,9 @@ module.exports.findUsers = function(req, res) {
     if(typeof req.query.name != 'undefined'){
         userModel.find({'name': req.query.name})
     }
+    if(typeof req.query.email != 'undefined'){
+        userModel.find({'email': req.query.email})
+    }
     userModel.exec(function(err, users) {
             if(users != null) {
                 let lightUsers = [];
