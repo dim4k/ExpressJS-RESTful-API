@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('../../config/conf.json');
+
 let gracefulShutdown;
 let dbURI = config.db.url+':'+config.db.port;
 if (process.env.NODE_ENV === 'production') {

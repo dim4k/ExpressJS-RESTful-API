@@ -2,7 +2,8 @@
   "app" : {
     "name" : "mean_stack",
     "host" : "localhost",
-    "port" : 3000
+    "port" : 3000,
+    "enckey" : "SECRET"
   },
   "db" : {
     "url" : "localhost",

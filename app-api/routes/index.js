@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('express-jwt');
+const config = require('../../config/conf.json');
+
 const auth = jwt({
-    secret: 'MY_SECRET',
+    secret: config.app.enckey,
     userProperty: 'payload'
 });
 
