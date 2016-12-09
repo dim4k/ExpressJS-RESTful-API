@@ -3,4 +3,10 @@
         <h1><%- title.title %></h1>
         <p><%- title.text %></p>
     </div>
+    <h2>Public</h2>
+    <ul>
+        <% routes.forEach(function(route) { %>
+        <li><%= route %></li>
+        <% }); %>
+    </ul>
 </main>

@@ -11,7 +11,7 @@ const ctrlAuth = require('../controllers/authentication.controller');
 
 // profile
 router.get('/profile', auth, ctrlUser.profileRead);
-router.get('/user/:id', ctrlUser.findUserById);
+router.get('/user/:idUser', ctrlUser.findUserById);
 router.get('/users', ctrlUser.findUsers);
 
 // authentication
@@ -22,7 +22,8 @@ router.post('/login', ctrlAuth.login);
 router.get('/', function(req, res, next) {
     const title = {title:'REST API', text:'Reference documentation'};
     //TODO : List all get and post methods
-    res.render('index/index.ejs',{title:title});
+    const routes = router.stack.filter(r => r.route).map(r => r.route.path);
+    res.render('index/index.ejs',{title:title, routes:routes});
 });
 
 module.exports = router;
