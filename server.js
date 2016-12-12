@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 
-app.use('/api', routesApi);
+app.use('/', routesApi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

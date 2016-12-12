@@ -23,7 +23,6 @@ router.post('/login', ctrlAuth.login);
 /* GET home page.*/
 router.get('/', function(req, res, next) {
     const title = {title:'REST API', text:'Reference documentation'};
-    //TODO : List all get and post methods
     let routes=[];
     let i=0;
     router.stack.forEach(function (r) {
@@ -42,7 +41,6 @@ router.get('/', function(req, res, next) {
             i++;
         }
     });
-    console.log(routes);
     res.render('index/index.ejs',{title:title, routes:routes});
 });
 
