@@ -24,11 +24,11 @@ module.exports.findUserById = function(req, res) {
                 if(Array.isArray(users)) {
                     let i = 0;
                     for (let user of users) {
-                        lightUsers[i] = {"email" :user.email,"name":user.name};
+                        lightUsers[i] = {"email" :user.email,"username":user.username};
                         i++;
                     }
                 }else{
-                    lightUsers[0] = {"email": users.email,"name":users.name};
+                    lightUsers[0] = {"email": users.email,"username":users.username};
                 }
                 res.status(200).json(lightUsers);
             }else{
@@ -51,11 +51,11 @@ module.exports.findUsers = function(req, res) {
                 if(Array.isArray(users)) {
                     let i = 0;
                     for (let user of users) {
-                        lightUsers[i] = {"id" : user._id,"email" :user.email,"name":user.name};
+                        lightUsers[i] = {"id" : user._id,"email" :user.email,"username":user.username};
                         i++;
                     }
                 }else{
-                    lightUsers[0] = {"id" : user._id,"email": users.email,"name":users.name};
+                    lightUsers[0] = {"id" : user._id,"email": users.email,"username":users.username};
                 }
                 res.status(200).json(lightUsers);
             }else{
