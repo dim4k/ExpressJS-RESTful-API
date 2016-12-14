@@ -18,15 +18,15 @@
                         <tr>
                             <th>URI</th>
                             <th>Type</th>
+                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
                     <% routes.forEach(function(route) { %>
                         <tr>
-                            <td><%= route.path %></td>
-                            <% route.methods.forEach(function(method) { %>
-                                <td><%= method %></td>
-                            <% }); %>
+                            <td><%= route.uri %></td>
+                            <td><%= route.method %></td>
+                            <td></td>
                         </tr>
                     <% }); %>
                     </tbody>

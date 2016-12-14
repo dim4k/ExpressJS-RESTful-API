@@ -36,7 +36,7 @@ userSchema.methods.generateJwt = function() {
         email: this.email,
         username: this.username,
         exp: parseInt(expiry.getTime() / 1000),
-    }, config.app.enckey);
+    }, config.app.jwtkey);
 };
 
 mongoose.model('User', userSchema);

@@ -47,7 +47,8 @@ app.use(function (err, req, res, next) {
 });
 
 const server = app.listen(config.app.port, function() {
-    console.log('App listening at http://%s:%s', config.app.host, config.app.port);
+    console.log('*********************\n' + '*   SERVER START   *\n' + '*********************\n'+
+        'API documentation : http://%s:%s\n', config.app.host, config.app.port);
 });
 
 module.exports = app;

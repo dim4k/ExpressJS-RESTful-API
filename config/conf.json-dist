@@ -3,7 +3,7 @@
     "name" : "mean_stack",
     "host" : "localhost",
     "port" : 3000,
-    "enckey" : "SECRET"
+    "jwtkey" : "SECRET"
   },
   "db" : {
     "url" : "localhost",

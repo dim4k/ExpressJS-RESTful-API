@@ -8,7 +8,6 @@ const sendJSONresponse = function(res, status, content) {
 };
 
 module.exports.register = function(req, res) {
-    console.log(req.body);
 
      if(!req.body.username || !req.body.email || !req.body.password) {
        sendJSONresponse(res, 400, {

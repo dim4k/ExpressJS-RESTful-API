@@ -4,21 +4,25 @@ const jwt = require('express-jwt');
 const config = require('../../config/conf.json');
 
 const auth = jwt({
-    secret: config.app.enckey,
+    secret: config.app.jwtkey,
     userProperty: 'payload'
 });
 
 const ctrlUser = require('../controllers/user.controller');
 const ctrlAuth = require('../controllers/authentication.controller');
+const ctrlApi = require('../controllers/api.controller');
 
 // profile
 router.get('/profile', auth, ctrlUser.profileRead);
-router.get('/user/:idUser', ctrlUser.findUserById);
+router.get('/users/:idUser', ctrlUser.findUserById);
 router.get('/users', ctrlUser.findUsers);
 
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
+
+// apiDoc
+router.post('/apidocs', ctrlApi.addApiDoc);
 
 /* GET home page.*/
 router.get('/', function(req, res, next) {
@@ -34,13 +38,19 @@ router.get('/', function(req, res, next) {
                 return result;
             }, []);
             const routeObj = {};
-            routeObj.methods = methods.map(function(method){return method.toUpperCase()});
-            routeObj.path = r.route.path;
 
-            routes[i] = routeObj;
-            i++;
+            methods.forEach(function(method){
+                routeObj.method = method;
+                routeObj.uri = r.route.path;
+                routes[i] = routeObj;
+                i++;
+            });
         }
     });
+    //TODO add details from apidocs to routes
+    /*routes.forEach(function(apiDocQuery){
+        console.log(ctrlApi.local_findApiDocs(apiDocQuery)[0]);
+    });*/
     res.render('index/index.ejs',{title:title, routes:routes});
 });
 
