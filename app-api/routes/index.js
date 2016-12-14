@@ -33,8 +33,8 @@ router.get('/', function(req, res, next) {
                 }
                 return result;
             }, []);
-            const routeObj = new Object();
-            routeObj.methods = methods;
+            const routeObj = {};
+            routeObj.methods = methods.map(function(method){return method.toUpperCase()});
             routeObj.path = r.route.path;
 
             routes[i] = routeObj;
