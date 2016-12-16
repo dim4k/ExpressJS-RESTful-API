@@ -6,11 +6,11 @@ const bodyParser = require('body-parser');
 const config = require('./config/conf.json');
 const passport = require('passport');
 
-
 require('./app-api/models/db');
 require('./app-api/config/passport');
-const index = require('./app-api/routes/index');
-const routesApi = require('./app-api/routes/index');
+const routesUsers = require('./app-api/routes/user');
+const routesIndex = require('./app-api/routes/index');
+const routesAuth = require('./app-api/routes/authentication');
 
 const app = express();
 
@@ -26,10 +26,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(passport.initialize());
 
-app.use('/', routesApi);
+app.use('/', routesUsers);
+app.use('/', routesIndex);
+app.use('/', routesAuth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

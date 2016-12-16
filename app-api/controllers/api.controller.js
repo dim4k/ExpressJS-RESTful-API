@@ -57,7 +57,6 @@ module.exports.local_findApiDocs = function(req) {
     }
     apiDocModel.exec(function(err, ApiDocs) {
         if(ApiDoc != null) {
-            console.log(ApiDocs);
             return ApiDocs;
         }else{
             return {};
