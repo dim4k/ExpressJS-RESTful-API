@@ -1,7 +1,10 @@
 const express = require('express');
+const async = require('async');
 const router = express.Router();
 const jwt = require('express-jwt');
 const config = require('../../config/conf.json');
+const mongoose = require('mongoose');
+const ApiDoc = mongoose.model('Apidoc');
 
 const auth = jwt({
     secret: config.app.jwtkey,
@@ -23,9 +26,10 @@ router.post('/login', ctrlAuth.login);
 
 // apiDoc
 router.post('/apidocs', ctrlApi.addApiDoc);
+router.get('/apidocs', ctrlApi.findApiDocs);
 
 /* GET home page.*/
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     const title = {title:'REST API', text:'Reference documentation'};
     let routes=[];
     let i=0;
@@ -48,10 +52,20 @@ router.get('/', function(req, res, next) {
         }
     });
     //TODO add details from apidocs to routes
-    /*routes.forEach(function(apiDocQuery){
-        console.log(ctrlApi.local_findApiDocs(apiDocQuery)[0]);
-    });*/
-    res.render('index/index.ejs',{title:title, routes:routes});
+    async.each(routes, function(route, callback){
+        let apiDocModel = ApiDoc.find();
+        apiDocModel.findOne(route);
+        apiDocModel.exec(function(err, apiDocs) {
+            if(apiDocs != null && typeof routes != 'undefined') {
+                route.detail = apiDocs.detail;
+            }else{
+                route.detail = '';
+            }
+        });
+        callback();
+    }, function(err) {
+        res.render('index/index.ejs',{title:title, routes:routes});
+    });
 });
 
 module.exports = router;

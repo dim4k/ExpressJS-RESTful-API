@@ -53,7 +53,7 @@ module.exports.local_findApiDocs = function(req) {
     let apiDocModel = ApiDoc.find();
     //Restricting results with URI parameters
     if(typeof req != 'undefined'){
-        apiDocModel.find(req)
+        apiDocModel.find(req);
     }
     apiDocModel.exec(function(err, ApiDocs) {
         if(ApiDoc != null) {
