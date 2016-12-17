@@ -1,5 +1,5 @@
-# ExpressJS Restful Api
-<p>Restful API using MongoDB, ExpressJs, NodeJs</p>
+# ExpressJS RESTful Api
+<p>RESTful API using MongoDB, ExpressJs, NodeJs</p>
 <p>Featuring :</p>
 * Authentication
 * API Documentation generator
