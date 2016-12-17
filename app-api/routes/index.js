@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
     const query = ApiDoc.find();
     const promise = query.exec();
     promise.then(function(apiDocModel){
-        res.render('index/index.ejs',{title:title, routes:apiDocModel})
+        res.render('index/index.twig',{title:title, routes:apiDocModel})
     });
 });
 

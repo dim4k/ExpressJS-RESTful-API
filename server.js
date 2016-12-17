@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const config = require('./config/conf.json');
 const passport = require('passport');
+const twig = require("twig");
 
 require('./app-api/models/db');
 require('./app-api/config/passport');
@@ -16,8 +17,11 @@ const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app-api/views'));
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'twig');
+app.set('twig options', {
+    strict_variables: false
+});
+app.engine('html', require('twig').renderFile);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
