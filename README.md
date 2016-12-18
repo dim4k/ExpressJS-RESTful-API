@@ -24,12 +24,18 @@ git clone https://github.com/dim4k/ExpressJS-RESTful-API.git
 ##### Install and configure MongoDB server
 
 Download and install MongoDB from https://www.mongodb.com/download-center
-Setup your server then modify go in ProjectDirectory/config/conf.json-dist
-Change this configuration file according to your setup and rename it (removie "-dist" to make it conf.json)
 
-##### Run the server
+Setup your server then modify go in ProjectDirectory/config/conf.json-dist. Change this configuration file according to your setup and rename it (removie "-dist" to make it conf.json)
 
-Just go at the root directory of your project and run :
+##### Run the API
+
+Install the dependencies
+
+```sh
+npm install
+```
+
+Run the server :
 
 ```sh
 node server.js
