@@ -15,27 +15,40 @@ Server requirements
 Installation
 ----
 
-##### Clone Github repository
+#### Optional - Create a MongoDB Service (Windows)
+
+First download and install MongoDB from https://www.mongodb.com/download-center
+
+Go in {ProjectDirectoryPath}/config/mongodb.conf-dist, setup the 2 paths for the MongoDB server data and log, rename the file to mongodb.conf
+
+Run :
+
+```sh
+mongod -f "{YOUR_PROJECT_DIRECTORY}\mean_stack\config\mongodb.conf" --install --serviceName mdb27017 --serviceDisplayName "MongoDB Server Instance 27017" --serviceDescription "MongoDB Server Instance running on 27017"
+```
+
+Find and start the service you just created (named "MongoDB Server Instance 27017").
+
+#### Clone Github repository
 
 ```sh
 git clone https://github.com/dim4k/ExpressJS-RESTful-API.git
 ```
+#### Install the dependencies
 
-##### Install and configure MongoDB server
-
-Download and install MongoDB from https://www.mongodb.com/download-center
-
-Setup your server then go in ProjectDirectory/config/conf.json-dist, change this configuration file according to your setup and rename it (remove "-dist" to make it conf.json)
-
-##### Run the API
-
-Install the dependencies
+At the root of your project, run :
 
 ```sh
 npm install
 ```
 
-Run the server :
+#### Setup the server
+
+Setup your server then go in {ProjectDirectoryPath}/config/conf.json-dist, change this configuration file according to your setup and rename it to conf.json
+
+#### Run the server
+
+At the root of your project, run :
 
 ```sh
 node server.js
