@@ -13,8 +13,9 @@ router.get('/', function(req, res) {
     const title = {title:'REST API', text:'Reference documentation'};
     const query = ApiDoc.find();
     const promise = query.exec();
+    const reqmessage = req.query.reqmessage;
     promise.then(function(apiDocModel){
-        res.render('index/index.twig',{title:title, routes:apiDocModel})
+        res.render('index/index.twig',{title:title, routes:apiDocModel, reqmessage:reqmessage})
     });
 });
 

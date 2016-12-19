@@ -13,6 +13,8 @@ module.exports.addApiDoc = function(req, res) {
         if(err){
             console.log(err);
             return;
+        }else if(req.body.localApp){
+            res.redirect('/?reqmessage=' + req.body.uri);
         }else{
             res.status(200);
             res.json({
@@ -44,22 +46,6 @@ module.exports.findApiDocs = function(req, res) {
             res.status(200).json(ApiDocs);
         }else{
             res.status(200).json({});
-        }
-    });
-};
-
-module.exports.local_findApiDocs = function(req) {
-    //Find all users
-    let apiDocModel = ApiDoc.find();
-    //Restricting results with URI parameters
-    if(typeof req != 'undefined'){
-        apiDocModel.find(req);
-    }
-    apiDocModel.exec(function(err, ApiDocs) {
-        if(ApiDoc != null) {
-            return ApiDocs;
-        }else{
-            return {};
         }
     });
 };

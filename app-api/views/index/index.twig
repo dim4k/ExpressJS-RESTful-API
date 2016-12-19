@@ -43,9 +43,31 @@
     {%  for route in routes %}
         {% include "../forms/apidocs/delete.twig" with {'id':'deleteRouteModal', 'route':route} %}
     {% endfor %}
+
+    {% if reqmessage is defined %}
+        <div class="modal fade in" id="modalMessage">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a class="close" data-dismiss="modal">×</a>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ressource {{ reqmessage }} inserted</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
     <!-- END OF MODALS BLOC -->
 {% endblock %}
 
 {% block footer %}
+    {% if reqmessage is defined %}
+        <script>
+            $(document).ready(function(){
+                $('#modalMessage').modal('show');
+            });
+        </script>
+    {% endif %}
     {% include '../footer.twig' with {'title':title}%}
 {% endblock %}

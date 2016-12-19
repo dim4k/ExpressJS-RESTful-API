@@ -1,6 +1,6 @@
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="{{ id }}Label" id="{{ id }}">
     <div class="modal-dialog modal-lg" role="document">
-        <form action="" method="post">
+        <form action="apidocs" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -25,6 +25,7 @@
                                 <input class="form-control" id="detail" name="detail">
                             </div>
                         </div>
+                        <input class="form-controle" type="hidden" id="detail" name="localApp" value ="true">
                     </div>
                 <div class="modal-footer">
                     <button type="submit"  value="Submit" class="btn btn-primary">Submit</button>
