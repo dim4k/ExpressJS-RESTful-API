@@ -1,0 +1,7 @@
+{% if title is defined %}
+    <h1>{{ title.title }}</h1>
+    <p>{{ title.text }}</p>
+{% else %}
+    <h1>REST API</h1>
+    <p>Documentation reference</p>
+{% endif %}

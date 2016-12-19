@@ -1,70 +1,51 @@
 {% extends "../layout.twig" %}
+
+{% block header %}
+    {% include '../header.twig' with {'title':title}%}
+{% endblock %}
+
 {% block body %}
-        <div class="page-header">
-            <h1>{{ title.title }}</h1>
-            <p>{{ title.text }}</p>
-        </div>
-        <h3>Public</h3>
-        <div class ="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>URI</th>
-                    <th>Type</th>
-                    <th>Description</th>
-                    <th>Options</th>
-                </tr>
-                </thead>
-                <tbody>
-                {%  for route in routes %}
-                <tr>
-                    <td>{{ route.uri }}</td>
-                    <td style = "text-transform: uppercase;">{{ route.method }}</td>
-                    <td>{{ route.detail.shortDescription }}</td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                            <button data-target="#deleteRouteModal" data-toggle="modal" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
-                        </div>
-                    </td>
-                </tr>
-                {%  endfor %}
-                </tbody>
-            </table>
-        </div>
-        <button style = "font-family:Helvetica Neue, Helvetica, Arial, sans-serif" class="btn btn-default" data-toggle="modal" data-target="#addRouteModal">
-            <span class="glyphicon glyphicon-plus"></span> Add route
-        </button>
+    <h3>Public</h3>
+    <div class ="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>URI</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for route in routes %}
+            <tr>
+                <td>{{ route.uri }}</td>
+                <td style = "text-transform: uppercase;">{{ route.method }}</td>
+                <td>{{ route.detail.shortDescription }}</td>
+                <td>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <button data-target="#deleteRouteModal-{{ route.id }}" data-toggle="modal" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+                </td>
+            </tr>
+            {%  endfor %}
+            </tbody>
+        </table>
+    </div>
+    <button style = "font-family:Helvetica Neue, Helvetica, Arial, sans-serif" class="btn btn-default" data-toggle="modal" data-target="#addRouteModal">
+        <span class="glyphicon glyphicon-plus"></span> Add route
+    </button>
 
-        <!-- MODALS BLOC -->
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="addRouteModalLabel" id="addRouteModal">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Add resource</h4>
-                    </div>
-                    {% include "../forms/apidoc.twig" %}
-                </div>
-            </div>
-        </div>
+    <!-- MODALS BLOC -->
+    {% include "../forms/apidocs/new.twig" with {'id':'addRouteModal'} %}
 
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="deleteRouteModalLabel" id="deleteRouteModal">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Delete resource</h4>
-                    </div>
-                    <div class="modal-body">
-                        You are about to delete this route, are you sure ?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit"  value="Submit" class="btn btn-danger">Delete</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END OF MODALS BLOC -->
+    {%  for route in routes %}
+        {% include "../forms/apidocs/delete.twig" with {'id':'deleteRouteModal', 'route':route} %}
+    {% endfor %}
+    <!-- END OF MODALS BLOC -->
+{% endblock %}
+
+{% block footer %}
+    {% include '../footer.twig' with {'title':title}%}
 {% endblock %}

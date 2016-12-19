@@ -7,7 +7,16 @@
 </head>
 <body>
 <div class="container">
-    {% block body %}{% endblock %}
+    <div class="page-header">
+        {% block header %}{% endblock %}
+    </div>
+    <div class="row">
+        {% block body %}{% endblock %}
+    </div>
+    <hr>
+    <div class="row">
+        {% block footer %}{% endblock %}
+    </div>
 </div>
 </body>
 </html>
