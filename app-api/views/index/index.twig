@@ -23,19 +23,19 @@
                 </tr>
                 </thead>
                 <tbody>
+                {%  for route in routes %}
                 <tr>
-                    {%  for route in routes %}
-                        <td>{{ route.uri }}</td>
-                        <td style = "text-transform: uppercase;">{{ route.method }}</td>
-                        <td>{{ route.detail.shortDescription }}</td>
-                        <td>
-                            <div class="btn-group">
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
-                            </div>
-                        </td>
-                    {%  endfor %}
+                    <td>{{ route.uri }}</td>
+                    <td style = "text-transform: uppercase;">{{ route.method }}</td>
+                    <td>{{ route.detail.shortDescription }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                    </td>
                 </tr>
+                {%  endfor %}
                 </tbody>
             </table>
         </div>
