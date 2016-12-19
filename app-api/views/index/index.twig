@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <div class="container">
+{% extends "../layout.twig" %}
+{% block body %}
         <div class="page-header">
             <h1>{{ title.title }}</h1>
             <p>{{ title.text }}</p>
@@ -31,7 +24,7 @@
                     <td>
                         <div class="btn-group">
                             <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></a>
-                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></a>
+                            <button data-target="#deleteRouteModal" data-toggle="modal" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
                         </div>
                     </td>
                 </tr>
@@ -51,37 +44,27 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Add resource</h4>
                     </div>
+                    {% include "../forms/apidoc.twig" %}
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="deleteRouteModalLabel" id="deleteRouteModal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Delete resource</h4>
+                    </div>
                     <div class="modal-body">
-                        <form>
-                            <div class="form-group row">
-                                <label for="inputUri" class="col-sm-2 col-form-label">URI</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputUri">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputType" class="col-sm-2 col-form-label">Type</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputType">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputDesc" class="col-sm-2 col-form-label">Description</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="inputDesc">
-                                </div>
-                            </div>
-                        </form>
+                        You are about to delete this route, are you sure ?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Submit</button>
+                        <button type="submit"  value="Submit" class="btn btn-danger">Delete</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- END OF MODALS BLOC -->
-
-    </div>
-</body>
-</html>
+{% endblock %}
