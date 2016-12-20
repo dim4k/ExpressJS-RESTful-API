@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const ApiDoc = mongoose.model('Apidoc');
 
-module.exports.add = function(req, res) {
+module.exports.addApidoc = function(req, res) {
     const apiDoc = new ApiDoc(
         {
             uri:req.body.uri,
             method:req.body.method,
-            detail:req.body.detail,
+            detail:{shortDescription:req.body.shortDescription}
         }
     );
     apiDoc.save(function(err) {
@@ -26,7 +26,7 @@ module.exports.add = function(req, res) {
     });
 };
 
-module.exports.delete = function(req, res) {
+module.exports.deleteApidoc = function(req, res) {
     ApiDoc.findByIdAndRemove(req.params.idApidoc, function(err) {
         if(err){
             console.log(err);
@@ -44,7 +44,7 @@ module.exports.delete = function(req, res) {
     });
 };
 
-module.exports.find = function(req, res) {
+module.exports.findApidocs = function(req, res) {
     //Find all users
     let apiDocModel = ApiDoc.find();
     //Restricting results with URI parameters
@@ -56,6 +56,33 @@ module.exports.find = function(req, res) {
             res.status(200).json(ApiDocs);
         }else{
             res.status(200).json({});
+        }
+    });
+};
+
+module.exports.updateApidoc = function(req, res) {
+    const apiDoc = new ApiDoc(
+        {
+            _id:req.params.idApidocs,
+            uri:req.body.uri,
+            method:req.body.method,
+            detail:{shortDescription:req.body.shortDescription}
+        }
+    );
+    console.log(apiDoc);
+    ApiDoc.findByIdAndUpdate(req.params.idApidocs, apiDoc, function(err, apidoc) {
+        if(err){
+            console.log(err);
+            return;
+        }else if(typeof req.body.localApp != 'undefined'){
+            console.log('ApiDoc updated!');
+            res.redirect('/?reqmessage=' + req.body.localApp);
+        }else{
+            console.log('ApiDoc updated!');
+            res.status(200);
+            res.json({
+                "message" : "Update successful"
+            });
         }
     });
 };

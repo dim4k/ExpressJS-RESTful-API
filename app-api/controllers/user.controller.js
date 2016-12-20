@@ -35,7 +35,6 @@ module.exports.findUserById = function(req, res) {
                 res.status(200).json({});
             }
         });
-
 };
 
 module.exports.findUsers = function(req, res) {

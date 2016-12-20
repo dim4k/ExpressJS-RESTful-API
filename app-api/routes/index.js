@@ -5,10 +5,11 @@ const ApiDoc = mongoose.model('Apidoc');
 
 const ctrlApi = require('../controllers/api.controller');
 
-router.post('/apidocs', ctrlApi.add);
-router.get('/apidocs', ctrlApi.find);
-router.delete('/apidocs/:idApidoc', ctrlApi.delete);
-router.get('/apidocs/:idApidoc/delete', ctrlApi.delete);
+router.post('/apidocs', ctrlApi.addApidoc);
+router.get('/apidocs', ctrlApi.findApidocs);
+router.delete('/apidocs/:idApidoc', ctrlApi.deleteApidoc);
+router.get('/apidocs/:idApidoc/delete', ctrlApi.deleteApidoc);
+router.post('/apidocs/:idApidocs', ctrlApi.updateApidoc);
 
 /* GET home page.*/
 router.get('/', function(req, res) {
