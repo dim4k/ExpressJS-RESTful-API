@@ -10,6 +10,12 @@
         <br/>
     {% else %}
     <h3>List of ressources</h3>
+    {% if reqmessage is defined %}
+        <div class="alert alert-success alert-dismissable fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success : </strong> {{ reqmessage }}
+        </div>
+    {% endif %}
     <div class ="table-responsive">
         <table class="table">
             <thead>
@@ -24,7 +30,13 @@
             {% for route in routes %}
             <tr>
                 <td>{{ route.uri }}</td>
-                <td style = "text-transform: uppercase;">{{ route.method }}</td>
+                {% if route.method == "get" %}
+                    <td><span style = "text-transform: uppercase;cursor:default;" class="btn btn-sm btn-success">{{ route.method }}</span></td>
+                {% elseif route.method == "post" %}
+                    <td><span  style = "text-transform: uppercase;cursor:default;" class="btn btn-sm btn-primary">{{ route.method }}</span></td>
+                {% else %}
+                    <td><span  style = "text-transform: uppercase;cursor:default;" class="btn btn-sm btn-danger">{{ route.method }}</span></td>
+                {% endif %}
                 <td>{{ route.detail.shortDescription }}</td>
                 <td>
                     <div class="btn-group">
@@ -53,20 +65,6 @@
         {% include "../forms/apidocs/update.twig" with {'id':'updateRouteModal', 'route':route} %}
     {% endfor %}
 
-    {% if reqmessage is defined %}
-        <div class="modal fade in" id="modalMessage">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <a class="close" data-dismiss="modal">×</a>
-                    </div>
-                    <div class="modal-body">
-                        <p>{{ reqmessage }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
     <!-- END OF MODALS BLOC -->
 {% endblock %}
 

@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 const ApiDoc = mongoose.model('Apidoc');
 
+module.exports.index = function(req, res) {
+    const title = {title:'REST API', text:'Reference documentation'};
+    const query = ApiDoc.find();
+    const promise = query.exec();
+    const reqmessage = req.query.reqmessage;
+    promise.then(function(apiDocModel){
+        res.render('index/index.twig',{title:title, routes:apiDocModel, reqmessage:reqmessage})
+    });
+};
+
 module.exports.addApidoc = function(req, res) {
     const apiDoc = new ApiDoc(
         {
@@ -69,7 +79,6 @@ module.exports.updateApidoc = function(req, res) {
             detail:{shortDescription:req.body.shortDescription}
         }
     );
-    console.log(apiDoc);
     ApiDoc.findByIdAndUpdate(req.params.idApidocs, apiDoc, function(err, apidoc) {
         if(err){
             console.log(err);
