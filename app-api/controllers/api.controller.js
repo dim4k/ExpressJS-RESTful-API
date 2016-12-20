@@ -14,6 +14,7 @@ module.exports.add = function(req, res) {
             console.log(err);
             return;
         }else if(req.body.localApp){
+            console.log('ApiDoc inserted!');
             res.redirect('/?reqmessage=' + req.body.localApp);
         }else{
             console.log('ApiDoc inserted!');
@@ -26,12 +27,12 @@ module.exports.add = function(req, res) {
 };
 
 module.exports.delete = function(req, res) {
-    console.log(req.params.idApidoc);
     ApiDoc.findByIdAndRemove(req.params.idApidoc, function(err) {
         if(err){
             console.log(err);
             return;
         }else if(req.query.localApp != 'undefined'){
+            console.log('ApiDoc deleted!');
             res.redirect('/?reqmessage=' + req.query.localApp);
         }else{
             console.log('ApiDoc deleted!');
