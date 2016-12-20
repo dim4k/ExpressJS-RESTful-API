@@ -9,7 +9,7 @@
                 You are about to delete {{ route.uri }} - {{ route.method }}, are you sure ?
             </div>
             <div class="modal-footer">
-                <button type="submit"  value="Submit" class="btn btn-danger">Delete</button>
+                <a href="/apidocs/{{ route.id }}/delete?localApp=Route+deleted+%21"><button type="button"  value="Submit" class="btn btn-danger">Delete</button></a>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

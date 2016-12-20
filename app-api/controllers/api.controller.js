@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const ApiDoc = mongoose.model('Apidoc');
 
-module.exports.addApiDoc = function(req, res) {
+module.exports.add = function(req, res) {
     const apiDoc = new ApiDoc(
         {
             uri:req.body.uri,
@@ -14,8 +14,9 @@ module.exports.addApiDoc = function(req, res) {
             console.log(err);
             return;
         }else if(req.body.localApp){
-            res.redirect('/?reqmessage=' + req.body.uri);
+            res.redirect('/?reqmessage=' + req.body.localApp);
         }else{
+            console.log('ApiDoc inserted!');
             res.status(200);
             res.json({
                 "message" : "Insert successful"
@@ -24,17 +25,25 @@ module.exports.addApiDoc = function(req, res) {
     });
 };
 
-module.exports.createOrUpdate = function(req, res) {
-    const apiDoc = new Apidoc();
-    apiDoc.findOneAndUpdate({route:req.body.uri,method:req.body.method},{$set:{"detail.shortDescription":req.body.shortDescription,"detail.description":req.body.description}}, {new: true}, function(err, doc){
+module.exports.delete = function(req, res) {
+    console.log(req.params.idApidoc);
+    ApiDoc.findByIdAndRemove(req.params.idApidoc, function(err) {
         if(err){
-            console.log("Something wrong when updating data!");
+            console.log(err);
+            return;
+        }else if(req.query.localApp != 'undefined'){
+            res.redirect('/?reqmessage=' + req.query.localApp);
+        }else{
+            console.log('ApiDoc deleted!');
+            res.status(200);
+            res.json({
+                "message" : "Delete successful"
+            });
         }
-        console.log(doc);
     });
 };
 
-module.exports.findApiDocs = function(req, res) {
+module.exports.find = function(req, res) {
     //Find all users
     let apiDocModel = ApiDoc.find();
     //Restricting results with URI parameters
