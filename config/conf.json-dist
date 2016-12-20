@@ -1,6 +1,6 @@
 {
   "app" : {
-    "name" : "mean_stack",
+    "name" : "rest_api",
     "host" : "localhost",
     "port" : 3000,
     "jwtkey" : "SECRET"
