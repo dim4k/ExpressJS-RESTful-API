@@ -47,7 +47,7 @@ Find and start the service you just created (named "MongoDB Server Instance 2701
 
 #### Setup the server
 
-Setup your server then go in {ProjectDirectoryPath}/config/conf.json-dist, change this configuration file according to your setup and rename it to conf.json
+Open {YOUR_PROJECT_DIRECTORY}/config/conf.json-dist, change this configuration file according to your setup and rename it to conf.json
 
 #### Run the server
 
