@@ -15,6 +15,8 @@ const apidocSchema = new mongoose.Schema({
     }
 });
 
+apidocSchema.index({uri:1,method:1},{unique:true});
+
 apidocSchema.methods.setDetail = function (shortDesc, Desc){
     this.detail.shortDescription = shortDesc;
     this.detail.description = Desc;
