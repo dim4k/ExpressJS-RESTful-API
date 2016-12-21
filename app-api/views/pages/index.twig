@@ -57,6 +57,7 @@
 
     <!-- MODALS BLOC -->
     {% include "../models/apidocs/new.twig" with {'id':'addRouteModal'} %}
+    {% include "../models/authentication/login.twig" with {'id':'login'} %}
 
     {%  for route in routes %}
         {% include "../models/apidocs/update.twig" with {'id':'updateRouteModal', 'route':route} %}

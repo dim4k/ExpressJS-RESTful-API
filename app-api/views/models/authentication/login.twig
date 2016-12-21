@@ -1,0 +1,31 @@
+<div class="modal fade bs-example-modal-default" tabindex="-1" role="dialog" aria-labelledby="{{ id }}Label" id="{{ id }}">
+    <div class="modal-dialog modal-default" role="document">
+        <form action="apidocs" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add resource</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="inputUri" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="username" name="username" placeholder="user">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputDesc" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="password" name="password" placeholder="password">
+                        </div>
+                    </div>
+                    <input class="form-controle" type="hidden" id="localApp" name="localApp" value ="Route inserted !">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit"  value="Submit" class="btn btn-primary">Login</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
