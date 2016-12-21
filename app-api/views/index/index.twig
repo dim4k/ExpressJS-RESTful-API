@@ -29,13 +29,13 @@
             <tbody>
             {% for route in routes %}
             <tr>
-                <td>{{ route.uri }}</td>
+                <td><code style = "background-color:#292B36;color:#ffffff;">{{ route.uri }}</code></td>
                 {% if route.method == "get" %}
                     <td><span style = "text-transform: uppercase;cursor:default;" class="btn btn-sm btn-success">{{ route.method }}</span></td>
                 {% elseif route.method == "post" %}
-                    <td><span  style = "text-transform: uppercase;cursor:default;" class="btn btn-sm btn-primary">{{ route.method }}</span></td>
+                    <td><span style = "text-transform: uppercase;cursor:default;" class="btn btn-sm btn-primary">{{ route.method }}</span></td>
                 {% else %}
-                    <td><span  style = "text-transform: uppercase;cursor:default;" class="btn btn-sm btn-danger">{{ route.method }}</span></td>
+                    <td><span style = "text-transform: uppercase;cursor:default;" class="btn btn-sm btn-danger">{{ route.method }}</span></td>
                 {% endif %}
                 <td>{{ route.detail.shortDescription }}</td>
                 <td>
