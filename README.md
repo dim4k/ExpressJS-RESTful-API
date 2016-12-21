@@ -1,7 +1,8 @@
 ExpressJS RESTful Api
 =====
 <p>RESTful API using MongoDB, ExpressJs, NodeJs</p>
-![Image of the API](http://i.imgur.com/cKau4fU.png)
+<p>This project also use Twig as template engine and Boostrap as frontend framework</p>
+![Screenshot of the API](http://i.imgur.com/cKau4fU.png)
 
 Featuring :
 ----
@@ -46,7 +47,7 @@ Find and start the service you just created (named "MongoDB Server Instance 2701
 
 #### Setup the server
 
-Setup your server then go in {ProjectDirectoryPath}/config/conf.json-dist, change this configuration file according to your setup and rename it to conf.json
+Open {YOUR_PROJECT_DIRECTORY}/config/conf.json-dist, change this configuration file according to your setup and rename it to conf.json
 
 #### Run the server
 
