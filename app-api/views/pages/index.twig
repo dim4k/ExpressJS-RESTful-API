@@ -41,6 +41,7 @@
                 <td>
                     <div class="btn-group">
                         <button data-target="#updateRouteModal-{{ route.id }}" data-toggle="modal" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button data-target="#detailsRouteModal-{{ route.id }}" data-toggle="modal" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span></button>
                         <button data-target="#deleteRouteModal-{{ route.id }}" data-toggle="modal" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button>
                     </div>
                 </td>
@@ -55,14 +56,12 @@
     </button>
 
     <!-- MODALS BLOC -->
-    {% include "../forms/apidocs/new.twig" with {'id':'addRouteModal'} %}
+    {% include "../models/apidocs/new.twig" with {'id':'addRouteModal'} %}
 
     {%  for route in routes %}
-        {% include "../forms/apidocs/delete.twig" with {'id':'deleteRouteModal', 'route':route} %}
-    {% endfor %}
-
-    {%  for route in routes %}
-        {% include "../forms/apidocs/update.twig" with {'id':'updateRouteModal', 'route':route} %}
+        {% include "../models/apidocs/update.twig" with {'id':'updateRouteModal', 'route':route} %}
+        {% include "../models/apidocs/delete.twig" with {'id':'deleteRouteModal', 'route':route} %}
+        {% include "../models/apidocs/details.twig" with {'id':'detailsRouteModal', 'route':route} %}
     {% endfor %}
 
     <!-- END OF MODALS BLOC -->
@@ -71,9 +70,7 @@
 {% block footer %}
     {% if reqmessage is defined %}
         <script>
-            $(document).ready(function(){
-                $('#modalMessage').modal('show');
-            });
+            $(document).ready(function(){$('#modalMessage').modal('show');});
         </script>
     {% endif %}
     {% include '../footer.twig' with {'title':title}%}

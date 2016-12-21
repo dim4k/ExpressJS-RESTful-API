@@ -7,7 +7,7 @@ module.exports.index = function(req, res) {
     const promise = query.exec();
     const reqmessage = req.query.reqmessage;
     promise.then(function(apiDocModel){
-        res.render('index/index.twig',{title:title, routes:apiDocModel, reqmessage:reqmessage})
+        res.render('pages/index.twig',{title:title, routes:apiDocModel, reqmessage:reqmessage})
     });
 };
 
