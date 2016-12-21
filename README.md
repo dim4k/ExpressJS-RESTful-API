@@ -1,6 +1,8 @@
 ExpressJS RESTful Api
 =====
 <p>RESTful API using MongoDB, ExpressJs, NodeJs</p>
+![Image of the API](http://i.imgur.com/cKau4fU.png)
+
 Featuring :
 ----
 * Authentication
