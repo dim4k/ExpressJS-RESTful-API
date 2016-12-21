@@ -1,7 +1,8 @@
 ExpressJS RESTful Api
 =====
 <p>RESTful API using MongoDB, ExpressJs, NodeJs</p>
-![Image of the API](http://i.imgur.com/cKau4fU.png)
+<p>This project also use Twig as template engine and Boostrap as frontend framework</p>
+![Screenshot of the API](http://i.imgur.com/cKau4fU.png)
 
 Featuring :
 ----
