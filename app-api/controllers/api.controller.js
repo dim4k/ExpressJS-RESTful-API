@@ -11,48 +11,6 @@ module.exports.index = function(req, res) {
     });
 };
 
-module.exports.addApidoc = function(req, res) {
-    const apiDoc = new ApiDoc(
-        {
-            uri:req.body.uri,
-            method:req.body.method,
-            detail:{shortDescription:req.body.shortDescription}
-        }
-    );
-    apiDoc.save(function(err) {
-        if(err){
-            console.log(err);
-            return;
-        }else if(req.body.localApp){
-            console.log('ApiDoc inserted!');
-            res.redirect('/?reqmessage=' + req.body.localApp);
-        }else{
-            console.log('ApiDoc inserted!');
-            res.status(200);
-            res.json({
-                "message" : "Insert successful"
-            });
-        }
-    });
-};
-
-module.exports.deleteApidoc = function(req, res) {
-    ApiDoc.findByIdAndRemove(req.params.idApidoc, function(err) {
-        if(err){
-            console.log(err);
-            return;
-        }else if(req.query.localApp != 'undefined'){
-            console.log('ApiDoc deleted!');
-            res.redirect('/?reqmessage=' + req.query.localApp);
-        }else{
-            console.log('ApiDoc deleted!');
-            res.status(200);
-            res.json({
-                "message" : "Delete successful"
-            });
-        }
-    });
-};
 
 module.exports.findApidocs = function(req, res) {
     //Find all users
@@ -70,6 +28,49 @@ module.exports.findApidocs = function(req, res) {
     });
 };
 
+module.exports.addApidoc = function(req, res) {
+    const apiDoc = new ApiDoc(
+        {
+            uri:req.body.uri,
+            method:req.body.method,
+            detail:{shortDescription:req.body.shortDescription}
+        }
+    );
+    apiDoc.save(function(err) {
+        if(err){
+            console.log(err);
+            return;
+        }else if(req.accepts('html')){
+            console.log('ApiDoc inserted!');
+            res.redirect('/?reqmessage=' + req.body.localApp);
+        }else{
+            console.log('ApiDoc inserted!');
+            res.status(200);
+            res.json({
+                "message" : "Insert successful"
+            });
+        }
+    });
+};
+
+module.exports.deleteApidoc = function(req, res) {
+    ApiDoc.findByIdAndRemove(req.params.idApidoc, function(err) {
+        if(err){
+            console.log(err);
+            return;
+        }else if(req.accepts('html')){
+            console.log('ApiDoc deleted!');
+            res.redirect('/?reqmessage=' + req.query.localApp);
+        }else{
+            console.log('ApiDoc deleted!');
+            res.status(200);
+            res.json({
+                "message" : "Delete successful"
+            });
+        }
+    });
+};
+
 module.exports.updateApidoc = function(req, res) {
     const apiDoc = new ApiDoc(
         {
@@ -83,7 +84,7 @@ module.exports.updateApidoc = function(req, res) {
         if(err){
             console.log(err);
             return;
-        }else if(typeof req.body.localApp != 'undefined'){
+        }else if(req.accepts('html')){
             console.log('ApiDoc updated!');
             res.redirect('/?reqmessage=' + req.body.localApp);
         }else{

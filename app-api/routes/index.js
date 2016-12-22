@@ -9,5 +9,6 @@ router.get('/apidocs', ctrlApi.findApidocs);
 router.delete('/apidocs/:idApidoc', ctrlApi.deleteApidoc);
 router.get('/apidocs/:idApidoc/delete', ctrlApi.deleteApidoc);
 router.post('/apidocs/:idApidocs', ctrlApi.updateApidoc);
+router.put('/apidocs/:idApidocs', ctrlApi.updateApidoc);
 
 module.exports = router;
