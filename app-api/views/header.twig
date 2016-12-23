@@ -1,7 +1,9 @@
 {% if title is defined %}
     <h1>{{ title.title }}
-        <button class='btn btn-default pull-right' data-target="#register" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Register</button>
-        <button class='btn btn-default pull-right' data-target="#login" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+        <div class="btn-group pull-right">
+            <button class='btn btn-default' data-target="#register" data-toggle="modal"><span class="glyphicon glyphicon-user"></span> Register</button>
+            <button class='btn btn-default' data-target="#login" data-toggle="modal"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+        </div>
     </h1>
     <p>{{ title.text }}</p>
 {% else %}

@@ -40,7 +40,8 @@ module.exports.addApidoc = function(req, res) {
         if(err){
             console.log(err);
             return;
-        }else if(req.accepts('html')){
+        }else if(req.accepts('text/html')){
+            console.log(req.accepts('html'));
             console.log('ApiDoc inserted!');
             res.redirect('/?reqmessage=' + req.body.localApp);
         }else{
@@ -58,7 +59,7 @@ module.exports.deleteApidoc = function(req, res) {
         if(err){
             console.log(err);
             return;
-        }else if(req.accepts('html')){
+        }else if(req.accepts('text/html')){
             console.log('ApiDoc deleted!');
             res.redirect('/?reqmessage=' + req.query.localApp);
         }else{
@@ -84,7 +85,7 @@ module.exports.updateApidoc = function(req, res) {
         if(err){
             console.log(err);
             return;
-        }else if(req.accepts('html')){
+        }else if(req.accepts('text/html')){
             console.log('ApiDoc updated!');
             res.redirect('/?reqmessage=' + req.body.localApp);
         }else{
