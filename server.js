@@ -40,7 +40,7 @@ app.use('/', routesAuth);
 app.use(function(req, res, next) {
     const err = new Error('Not Found');
     err.status = 404;
-    next(err);
+    res.json({"message" : err.name + ": " + err.message});
 });
 
 // catch 401 unauthorised erros
