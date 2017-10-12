@@ -2,7 +2,7 @@ ExpressJS RESTful Api
 =====
 <p>RESTful API using MongoDB, ExpressJs, NodeJs</p>
 <p>Integrated API Documentation generator using Twig and Bootstrap</p>
-![screenshot](http://i.imgur.com/cKau4fU.png)
+![screenshot](https://i.imgur.com/cKau4fU.png)
 
 Featuring :
 ----
